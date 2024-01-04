@@ -105,6 +105,7 @@ func walk(filename string, paths []string) error {
 			e := copyfile(fsys, path, tempfileName)
 			if e == nil {
 				walk(tempfileName, newPaths)
+				os.Remove(tempfileName)
 			} else {
 				log.Println("解压错误: ", path, " => name: ", tempfileName)
 			}
